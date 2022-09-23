@@ -93,6 +93,9 @@ class HotelHabitacionServiceTest {
 	void testAddHabitacionInvalidHotel() {
 		assertThrows(EntityNotFoundException.class, () -> {
 			HabitacionEntity newHabitacion = factory.manufacturePojo(HabitacionEntity.class);
+			newHabitacion.setNo_banos(2);
+        	newHabitacion.setNo_camas(3);
+
 			habitacionService.createHabitaciones(newHabitacion);
 			hotelHabitacionService.addHabitacion(0L, newHabitacion.getId());
 		});
