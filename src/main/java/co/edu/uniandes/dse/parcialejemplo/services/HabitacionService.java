@@ -1,5 +1,7 @@
 package co.edu.uniandes.dse.parcialejemplo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,4 +36,15 @@ public class HabitacionService {
 		log.info("Termina proceso de creación de la habitacion");
 		return habitacionRepository.save(habitacionEntity);
 	}
+
+    /**
+	 * Devuelve todas las habitaciones que hay en la base de datos.
+	 *
+	 * @return Lista de entidades de tipo habitacion.
+	 */
+    @Transactional
+    public List<HabitacionEntity> getHabitaciones() {
+        log.info("Inicia proceso de consultar todas las habitacions");
+        return habitacionRepository.findAll();
+    }
 }
